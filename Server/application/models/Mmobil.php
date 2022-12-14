@@ -9,27 +9,27 @@ class Mmobil extends CI_Model {
 
         $this->db->select("
         id_mobil AS id_mbl,
-        nama AS nama_mbl,
-        merk AS merk_mbl,
-        desk AS desk_mbl,
-        tahun AS tahun_mbl,
-        kapasitas AS kapasitas_mbl,
-        harga AS harga_mbl,
-        warna AS warna_mbl,
-        bensin AS bensin_mbl,
-        plat AS plat_mbl,
-        statusSw AS statusSw_mbl,
-        statusMb AS statusMb_mbl
+        nama_mobil AS nama_mbl,
+        merk_mobil AS merk_mbl,
+        deskripsi_mobil AS deskripsi_mbl,
+        tahun_mobil AS tahun_mbl,
+        kapasitas_mobil AS kapasitas_mbl,
+        harga_mobil AS harga_mbl,
+        warna_mobil AS warna_mbl,
+        bensin_mobil AS bensin_mbl,
+        plat_no_mobil AS plat_mbl,
+        status_sewa AS status_sw,
+        status_mobil AS status_mbl
         ");
         $this->db->from('tb_mobil');
 
         // jika token terisi
         if(!empty($token))
         {
-            $this->db->where("TO_BASE64 (nama) = '$token'",);
+            $this->db->where("TO_BASE64 (nama_mobil) = '$token'",);
         }
         // untuk melakukan pengurutan data berdasarkan npm dengan aturan ascending,parameter dua bersifat opsional
-        $this->db->order_by("nama", "DESC");
+        $this->db->order_by("nama_mobil", "DESC");
 
         // untuk melakukan query sql untuk mengambil data dan mengembalikan hasil
         $query = $this->db->get()->result();
@@ -39,16 +39,16 @@ class Mmobil extends CI_Model {
 
     //buat fungsi untuk hapus data
     function delete_data($token){
-        //cek apakah npm ada/tidak
-        $this->db->select("nama");
+        //cek apakah nama mobil ada/tidak
+        $this->db->select("nama_mobil");
         $this->db->from("tb_mobil");
-        $this->db->where("nama = '$token'");
+        $this->db->where("nama_mobil = '$token'");
         //eksekusi query
         $query = $this->db->get()->result();
-        //jika nama ditemukan
+        //jika nama_mobil ditemukan
         if(count($query) == 1){
             //hapus data mobil
-            $this->db->where("nama = '$token'");
+            $this->db->where("nama_mobil = '$token'");
             $this->db->delete("tb_mobil");
             //kirim nilai hasil = 1
             $hasil = 1;
@@ -63,34 +63,34 @@ class Mmobil extends CI_Model {
     }
 
     //buat fungsi utk simpan data
-    function save_data($nama,$merk,$desk,$tahun,$kapasitas,$harga,$warna,$bensin,$plat,$statusSW,$statusMb,$token){
+    function save_data($nama_mobil,$merk_mobil,$desk,$tahun_mobil,$kapasitas_mobil,$harga_mobil,$warna_mobil,$bensin_mobil,$plat_no_mobil,$status_sewa,$status_mobil,$token){
          //cek apakah npm ada/tidak
-         $this->db->select("nama");
+         $this->db->select("nama_mobil");
          $this->db->from("tb_mobil");
-         $this->db->where("TO_BASE64(nama) = '$token'");
+         $this->db->where("TO_BASE64(nama_mobil) = '$token'");
          //eksekusi query
          $query = $this->db->get()->result();
-         //jika nama tidak ditemukan
+         //jika nama_mobil tidak ditemukan
          if(count($query) == 0){
             //isi nilai untuk masing2 field
             $data = array(
-                "nama"          => $nama,
-                "merk"          => $merk,
+                "nama_mobil"          => $nama_mobil,
+                "merk_mobil"          => $merk_mobil,
                 "desk"          => $desk,
-                "tahun"         => $tahun,
-                "kapasitas"     => $kapasitas, 
-                "harga"         => $harga,
-                "warna"         => $warna,
-                "bensin"        => $bensin,
-                "plat"          => $plat,
-                "statusSw"      => $statusSW,
-                "statusMb"      => $statusMb,
+                "tahun_mobil"         => $tahun_mobil,
+                "kapasitas_mobil"     => $kapasitas_mobil, 
+                "harga_mobil"         => $harga_mobil,
+                "warna_mobil"         => $warna_mobil,
+                "bensin_mobil"        => $bensin_mobil,
+                "plat_no_mobil"          => $plat_no_mobil,
+                "status_sewa"      => $status_sewa,
+                "status_mobil"      => $status_mobil,
             );
             //simpan data
             $this->db->insert("tb_mobil",$data);
             $hasil = 0;
          }
-         //jika nama mobil ditemukan
+         //jika nama_mobil mobil ditemukan
          else{
             $hasil = 1;
          }
@@ -98,37 +98,37 @@ class Mmobil extends CI_Model {
     }
 
     //fungsi untuk ubah data
-    function update_data($nama,$merk,$desk,$tahun,$kapasitas,$harga,$warna,$bensin,$plat,$statusSW,$statusMb,$token){
-         //cek apakah nama mobil ada/tidak
-         $this->db->select("nama");
+    function update_data($nama_mobil,$merk_mobil,$desk,$tahun_mobil,$kapasitas_mobil,$harga_mobil,$warna_mobil,$bensin_mobil,$plat_no_mobil,$status_sewa,$status_mobil,$token){
+         //cek apakah nama_mobil mobil ada/tidak
+         $this->db->select("nama_mobil");
          $this->db->from("tb_mobil");
-         $this->db->where("TO_BASE64(nama) != '$token' AND nama = '$nama'");
+         $this->db->where("TO_BASE64(nama_mobil) != '$token' AND nama_mobil = '$nama_mobil'");
          //eksekusi query
          $query = $this->db->get()->result();
-         //jika nama mobil tidak ditemukan
+         //jika nama_mobil mobil tidak ditemukan
          if(count($query) == 0){
             //isi nilai untuk masing2 field
             $data = array(
-                "nama"          => $nama,
-                "merk"          => $merk,
+                "nama_mobil"          => $nama_mobil,
+                "merk_mobil"          => $merk_mobil,
                 "desk"          => $desk,
-                "tahun"         => $tahun,
-                "kapasitas"     => $kapasitas, 
-                "harga"         => $harga,
-                "warna"         => $warna,
-                "bensin"        => $bensin,
-                "plat"          => $plat,
-                "statusSw"      => $statusSW,
-                "statusMb"      => $statusMb,
+                "tahun_mobil"         => $tahun_mobil,
+                "kapasitas_mobil"     => $kapasitas_mobil, 
+                "harga_mobil"         => $harga_mobil,
+                "warna_mobil"         => $warna_mobil,
+                "bensin_mobil"        => $bensin_mobil,
+                "plat_no_mobil"          => $plat_no_mobil,
+                "status_sewa"      => $status_sewa,
+                "status_mobil"      => $status_mobil,
             );
 
             //ubah data mahasiswa
-            $this->db->where("TO_BASE64(nama) != '$token'");
+            $this->db->where("TO_BASE64(nama_mobil) != '$token'");
             $this->db->update("tb_mobil",$data);
             //kirim nilai hasil = 0
             $hasil = 0;
          }
-         //jika nama mobil ditemukan
+         //jika nama_mobil mobil ditemukan
          else{
             $hasil = 1;
          }
