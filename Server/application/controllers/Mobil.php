@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH."libraries/Server.php";
-class Mahasiswa extends Server {
+class Mobil extends Server {
 	//buat konstruktor
 	public function __construct()
 	{
@@ -14,7 +14,7 @@ class Mahasiswa extends Server {
 	// buat function get, untuk mengambil data
 	function service_get(){
 
-		$token = $this->get("nama");
+		$token = $this->get("nama_mobil");
 
 		// panggil model Mmobil, parameter kedua sebagai alias bersifat opsional
 		$this->load->model("Mmobil","model",TRUE);
@@ -23,7 +23,7 @@ class Mahasiswa extends Server {
 		$hasil = $this->model->get_data((base64_encode($token)));
 
 		// memanggil function response ketika data berhasil diambil
-		$this->response(array("mahasiswa" => $hasil),200);
+		$this->response(array("mobil" => $hasil),200);
 	}
 
 	// buat function put, untuk mengupdate data
@@ -32,33 +32,33 @@ class Mahasiswa extends Server {
 		$this->load->model("Mmobil", "model", TRUE);
 		//ambil parameter data yang akan diisi
 		$data = array(
-			"nama" => $this->put("nama_mobil"),
-			"merk" => $this->put("merk_mobil"),
-			"desk" => $this->put("desk_mobil"),
-			"tahun" => $this->put("tahun_mobil"),
-            "kapasitas" => $this->put("kapasitas_mobil"),
-            "harga" => $this->put("harga_mobil"),
-            "warna" => $this->put("warna_mobil"),
-            "bensin" => $this->put("bensin_mobil"),
-            "plat" => $this->put("plat_no_mobil"),
-            "statusSw" => $this->put("status_sewa"),
-            "statusMb" => $this->put("status_mobil"),
+			"nama_mobil" => $this->put("nama_mbl"),
+			"merk_mobil" => $this->put("merk_mbl"),
+			"deskripsi_mobil" => $this->put("deskripsi_mbl"),
+			"tahun_mobil" => $this->put("tahun_mbl"),
+            "kapasitas_mobil" => $this->put("kapasitas_mbl"),
+            "harga_mobil" => $this->put("harga_mbl"),
+            "warna_mobil" => $this->put("warna_mbl"),
+            "bensin_mobil" => $this->put("bensin_mbl"),
+            "plat_no_mobil" => $this->put("plat_mbl"),
+            "status_sewa" => $this->put("status_sw"),
+            "status_mobil" => $this->put("status_mbl"),
 			"token" => base64_encode($this->put("token")),
 		);
 
 		//panggil method "update data"
 		$hasil = $this->model->update_data(
-            $data["nama"],
-            $data["merk"],
-            $data["desk"],
-            $data["tahun"],
-            $data["kapasitas"],
-            $data["harga"],
-            $data["warna"],
-            $data["bensin"],
-            $data["plat"],
-            $data["statusSw"],
-            $data["statusMb"],
+            $data["nama_mobil"],
+            $data["merk_mobil"],
+            $data["deskripsi_mobil"],
+            $data["tahun_mobil"],
+            $data["kapasitas_mobil"],
+            $data["harga_mobil"],
+            $data["warna_mobil"],
+            $data["bensin_mobil"],
+            $data["plat_no_mobil"],
+            $data["status_sewa"],
+            $data["status_mobil"],
             $data["token"]);
 		
 		//jika hasil = 0
@@ -77,32 +77,32 @@ class Mahasiswa extends Server {
 		$this->load->model("Mmobil", "model", TRUE);
 		//ambil parameter data yang akan diisi
 		$data = array(
-			"nama" => $this->put("nama_mobil"),
-			"merk" => $this->put("merk_mobil"),
-			"desk" => $this->put("desk_mobil"),
-			"tahun" => $this->put("tahun_mobil"),
-            "kapasitas" => $this->put("kapasitas_mobil"),
-            "harga" => $this->put("harga_mobil"),
-            "warna" => $this->put("warna_mobil"),
-            "bensin" => $this->put("bensin_mobil"),
-            "plat" => $this->put("plat_no_mobil"),
-            "statusSw" => $this->put("status_sewa"),
-            "statusMb" => $this->put("status_mobil"),
-			"token" => base64_encode($this->put("nama")),
+			"nama_mobil" => $this->put("nama_mbl"),
+			"merk_mobil" => $this->put("merk_mbl"),
+			"deskripsi_mobil" => $this->put("deskripsi_mbl"),
+			"tahun_mobil" => $this->put("tahun_mbl"),
+            "kapasitas_mobil" => $this->put("kapasitas_mbl"),
+            "harga_mobil" => $this->put("harga_mbl"),
+            "warna_mobil" => $this->put("warna_mbl"),
+            "bensin_mobil" => $this->put("bensin_mbl"),
+            "plat_no_mobil" => $this->put("plat_mbl"),
+            "status_sewa" => $this->put("status_sw"),
+            "status_mobil" => $this->put("status_mbl"),
+			"token" => base64_encode($this->put("nama_mobil")),
 		);
 		//panggil method "save data"
 		$hasil = $this->model->save_data(
-            $data["nama"],
-            $data["merk"],
-            $data["desk"],
-            $data["tahun"],
-            $data["kapasitas"],
-            $data["harga"],
-            $data["warna"],
-            $data["bensin"],
-            $data["plat"],
-            $data["statusSw"],
-            $data["statusMb"],
+            $data["nama_mobil"],
+            $data["merk_mobil"],
+            $data["deskripsi_mobil"],
+            $data["tahun_mobil"],
+            $data["kapasitas_mobil"],
+            $data["harga_mobil"],
+            $data["warna_mobil"],
+            $data["bensin_mobil"],
+            $data["plat_no_mobil"],
+            $data["status_sewa"],
+            $data["status_mobil"],
             $data["token"]);
 		
         //jika hasil = 0
@@ -120,7 +120,7 @@ class Mahasiswa extends Server {
 
 		$this->load->model("Mmobil", "model", TRUE);
 
-		$token = $this->delete("nama");
+		$token = $this->delete("nama_mobil");
 
 		$hasil = $this->model->delete_data($token);
 
