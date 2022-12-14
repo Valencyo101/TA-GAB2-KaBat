@@ -63,7 +63,7 @@ class Mmobil extends CI_Model {
     }
 
     //buat fungsi utk simpan data
-    function save_data($nama_mobil,$merk_mobil,$desk,$tahun_mobil,$kapasitas_mobil,$harga_mobil,$warna_mobil,$bensin_mobil,$plat_no_mobil,$status_sewa,$status_mobil,$token){
+    function save_data($nama_mbl,$merk_mbl,$deskripsi_mbl,$tahun_mbl,$kapasitas_mbl,$harga_mbl,$warna_mbl,$bensin_mbl,$plat_mbl,$status_sw,$status_mbl,$token){
          //cek apakah npm ada/tidak
          $this->db->select("nama_mobil");
          $this->db->from("tb_mobil");
@@ -74,17 +74,17 @@ class Mmobil extends CI_Model {
          if(count($query) == 0){
             //isi nilai untuk masing2 field
             $data = array(
-                "nama_mobil"          => $nama_mobil,
-                "merk_mobil"          => $merk_mobil,
-                "desk"          => $desk,
-                "tahun_mobil"         => $tahun_mobil,
-                "kapasitas_mobil"     => $kapasitas_mobil, 
-                "harga_mobil"         => $harga_mobil,
-                "warna_mobil"         => $warna_mobil,
-                "bensin_mobil"        => $bensin_mobil,
-                "plat_no_mobil"          => $plat_no_mobil,
-                "status_sewa"      => $status_sewa,
-                "status_mobil"      => $status_mobil,
+                "nama_mobil"          => $nama_mbl,
+                "merk_mobil"          => $merk_mbl,
+                "deskripsi_mobil"     => $deskripsi_mbl,
+                "tahun_mobil"         => $tahun_mbl,
+                "kapasitas_mobil"     => $kapasitas_mbl, 
+                "harga_mobil"         => $harga_mbl,
+                "warna_mobil"         => $warna_mbl,
+                "bensin_mobil"        => $bensin_mbl,
+                "plat_no_mobil"       => $plat_mbl,
+                "status_sewa"         => $status_sw,
+                "status_mobil"        => $status_mbl,
             );
             //simpan data
             $this->db->insert("tb_mobil",$data);
@@ -98,7 +98,7 @@ class Mmobil extends CI_Model {
     }
 
     //fungsi untuk ubah data
-    function update_data($nama_mobil,$merk_mobil,$desk,$tahun_mobil,$kapasitas_mobil,$harga_mobil,$warna_mobil,$bensin_mobil,$plat_no_mobil,$status_sewa,$status_mobil,$token){
+    function update_data($nama_mbl,$merk_mbl,$deskripsi_mbl,$tahun_mbl,$kapasitas_mbl,$harga_mbl,$warna_mbl,$bensin_mbl,$plat_mbl,$status_sw,$status_mbl,$token){
          //cek apakah nama_mobil mobil ada/tidak
          $this->db->select("nama_mobil");
          $this->db->from("tb_mobil");
@@ -109,17 +109,17 @@ class Mmobil extends CI_Model {
          if(count($query) == 0){
             //isi nilai untuk masing2 field
             $data = array(
-                "nama_mobil"          => $nama_mobil,
-                "merk_mobil"          => $merk_mobil,
-                "desk"          => $desk,
-                "tahun_mobil"         => $tahun_mobil,
-                "kapasitas_mobil"     => $kapasitas_mobil, 
-                "harga_mobil"         => $harga_mobil,
-                "warna_mobil"         => $warna_mobil,
-                "bensin_mobil"        => $bensin_mobil,
-                "plat_no_mobil"          => $plat_no_mobil,
-                "status_sewa"      => $status_sewa,
-                "status_mobil"      => $status_mobil,
+                "nama_mobil"          => $nama_mbl,
+                "merk_mobil"          => $merk_mbl,
+                "deskripsi_mobil"     => $deskripsi_mbl,
+                "tahun_mobil"         => $tahun_mbl,
+                "kapasitas_mobil"     => $kapasitas_mbl, 
+                "harga_mobil"         => $harga_mbl,
+                "warna_mobil"         => $warna_mbl,
+                "bensin_mobil"        => $bensin_mbl,
+                "plat_no_mobil"       => $plat_mbl,
+                "status_sewa"         => $status_sw,
+                "status_mobil"        => $status_mbl,
             );
 
             //ubah data mahasiswa
