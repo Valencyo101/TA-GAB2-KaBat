@@ -58,12 +58,81 @@
   box-sizing: border-box;
 }
 
+.drop {
+    font-family: tahoma;
+    font-weight: bold;
+    height: 70px;
+    width: 100%;
+    font-size: 12px;
+}
+
+label {
+  font-family: comic sans ms;
+  font-size: 20pt;
+  color: black;
+  margin: 10px;
+  padding: 5px;
+  float: left;
+}
+
+.drop ul {
+  margin: 0px;
+  padding: 5px;
+  background: none;
+  display: block;
+  float: right;
+}
+
+.drop ul li {
+  list-style: none;
+  display: inline-block;
+}
+
+.drop ul li a{
+  display: block;
+  text-decoration: none;
+  padding: 20px;
+  color: black;
+}
+
+.drop ul li a:hover {
+  display: block;
+  color: green;
+  background: #222;
+  box-shadow: inser 0px 0px 5px #000;
+}
+
+.drop ul li .dropdown {
+  display: none;
+}
+
+.drop ul li:hover .dropdown {
+  display: block;
+  background: white;
+  position: absolute;
+  padding: 10px;
+}
+
+.drop ul li:hover .dropdown li {
+  display: block;
+}
+
+.drop ul li:hover .dropdown li a {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.drop ul li:hover .dropdown li a:hover {
+  background: #222;
+  box-shadow: inset 0px 0px 5px #000;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
   }
 }
-
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
