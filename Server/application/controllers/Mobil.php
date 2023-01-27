@@ -96,7 +96,6 @@ class Mobil extends REST_Controller
 							'PLAT_NO_MOBIL' =>$this->post('PLAT_NO_MOBIL'),
 							'STATUS_SEWA'=>0,
 							'STATUS_MOBIL'=>$this->post('STATUS_MOBIL'),
-							'CREATED_MOBIL'=>date('Y-m-d h:i:s'),
 						);
 		
 
